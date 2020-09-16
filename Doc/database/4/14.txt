@@ -1,0 +1,5 @@
+select m.surname, m.firstname, m.memid, min(b.starttime)
+from members m, bookings b
+where m.memid = b.memid and b.starttime >= '2012-09-01 00:00:00'
+group by m.memid
+order by m.memid;

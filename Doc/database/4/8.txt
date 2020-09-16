@@ -1,0 +1,6 @@
+select f.facid, sum(b.slots)
+from facilities f, bookings b
+where f.facid = b.facid  
+group by f.facid
+having sum(b.slots) > 1000
+order by f.facid;

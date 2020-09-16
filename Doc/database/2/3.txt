@@ -1,0 +1,4 @@
+select distinct a.firstname as firstname, a.surname as surname
+from members a, members b 
+where a.memid=b.recommendedby
+order by a.surname, a.firstname;

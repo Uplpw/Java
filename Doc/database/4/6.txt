@@ -1,0 +1,5 @@
+select f.facid, (select extract(month from  b.starttime)), sum(b.slots)
+from facilities f, bookings b
+where f.facid = b.facid and (select extract(year from  b.starttime)) = 2012
+group by f.facid, (select extract(month from  b.starttime))
+order by f.facid, (select extract(month from  b.starttime));

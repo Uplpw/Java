@@ -1,0 +1,5 @@
+select f.facid, f.name, sum(b.slots)*0.50（注意是0.50不是0.5）
+from facilities f, bookings b
+where f.facid = b.facid
+group by f.facid
+order by f.facid;

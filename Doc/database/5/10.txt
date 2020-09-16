@@ -1,0 +1,11 @@
+select f.name as name, date_trunc('month', b.starttime) as month, 
+ 					   (case when extract(month from date_trunc('month', b.starttime))=1 or 
+					   extract(month from date_trunc('month', b.starttime)) = 7 or
+					   extract(month from date_trunc('month', b.starttime)) = 8 
+					   then round(sum(b.slots)*50/(31*12.5),1)
+					   else round(sum(b.slots)*50/(30*12.5),1) end)
+					   as utilisation
+from facilities f, bookings b
+where f.facid = b.facid
+group by name, month
+order by name, month;

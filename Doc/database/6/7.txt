@@ -1,0 +1,3 @@
+select memid, replace(replace(replace(replace(telephone, '(', ''), ')', ''), ' ', ''), '-', '')
+from members
+order by memid;

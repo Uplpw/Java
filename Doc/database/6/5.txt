@@ -1,0 +1,8 @@
+select case when char_length('' || zipcode ) =1 then '0000' || zipcode
+			when char_length('' || zipcode ) =2 then '000' || zipcode
+			when char_length('' || zipcode ) =3 then '00' || zipcode
+			when char_length('' || zipcode ) =4 then '0' || zipcode
+			else '' || zipcode end
+			as zip
+from members
+order by zip;

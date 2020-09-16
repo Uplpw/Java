@@ -1,0 +1,7 @@
+select m.firstname || ' ' || m.surname as member, f.name as facility, 
+			(case when m.memid=0 then f.guestcost*b.slots else f.membercost*b.slots end) as cost
+from members m, bookings b, facilities f
+where m.memid=b.memid and b.facid=f.facid and 
+		b.starttime between '2012-09-14 00:00:00' and '2012-09-15 00:00:00'
+		and (case when m.memid=0 then f.guestcost*b.slots else f.membercost*b.slots end) > 30
+order by (case when m.memid=0 then f.guestcost*b.slots else f.membercost*b.slots end) desc;

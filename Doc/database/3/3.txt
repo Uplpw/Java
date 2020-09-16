@@ -1,0 +1,2 @@
+insert into facilities
+values ((select max(facid)+1 from facilities), 'Spa', 20, 30, 100000, 800);

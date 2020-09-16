@@ -1,0 +1,4 @@
+select distinct m.firstname || ' ' || m.surname as member, f.name as facility
+from members m, bookings b, facilities f
+where m.memid=b.memid and b.facid=f.facid and f.name in ('Tennis Court 1', 'Tennis Court 2')
+order by member;

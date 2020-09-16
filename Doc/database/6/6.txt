@@ -1,0 +1,4 @@
+select left(surname, 1) as letter, count(left(surname, 1))
+from members
+group by letter
+order by letter;

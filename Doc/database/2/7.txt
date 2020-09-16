@@ -1,0 +1,4 @@
+select distinct a.firstname || ' ' || a.surname as member,
+	(select concat(b.firstname, ' ' ,b.surname) from members b where a.recommendedby=b.memid)
+from members a, members b
+order by member;

@@ -1,0 +1,8 @@
+with recursive r as (
+        select memid, firstname, surname, recommendedby from members where memid = 27
+        union  all
+        select members.memid, members.firstname, members.surname, members.recommendedby
+  		from members, r 
+  		where members.memid = r.recommendedby 
+     )
+select memid,firstname, surname from r where memid <> 27 order by memid desc;

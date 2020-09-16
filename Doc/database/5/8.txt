@@ -1,0 +1,4 @@
+select starttime, starttime + interval '30 minute'*slots as endtime
+from bookings
+order by endtime desc, starttime desc
+limit 10;

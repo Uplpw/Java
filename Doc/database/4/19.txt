@@ -1,0 +1,6 @@
+select f.name, rank() over(order by sum(case when b.memid=0 then f.guestcost*b.slots 
+			   else f.membercost*b.slots end) desc, f.name asc)
+from facilities f, bookings b
+where f.facid = b.facid
+group by f.facid
+limit 3;

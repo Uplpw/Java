@@ -1,0 +1,5 @@
+select count(*) from
+  ( select distinct members.memid from members, bookings
+    where members.memid=bookings.memid 
+    group by members.memid
+    having count(members.memid) >= 1) as mem;

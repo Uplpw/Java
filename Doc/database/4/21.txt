@@ -1,0 +1,9 @@
+select f.name, f.initialoutlay/((sum(case when b.memid=0 then f.guestcost*b.slots 
+					                     else f.membercost*b.slots end))/3-
+										 f.monthlymaintenance)
+
+
+from facilities f, bookings b
+where f.facid = b.facid and b.starttime <= '2013-01-01 00:00:00'
+group by f.facid
+order by f.name;

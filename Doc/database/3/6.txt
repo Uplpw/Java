@@ -1,0 +1,6 @@
+update facilities
+set membercost=(select membercost from facilities 
+				where name = 'Tennis Court 1')*1.1,
+	guestcost=(select guestcost from facilities 
+				where name = 'Tennis Court 1')*1.1
+where name = 'Tennis Court 2';

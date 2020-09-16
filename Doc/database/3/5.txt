@@ -1,0 +1,3 @@
+update facilities
+set membercost = 6, guestcost= 30
+where name in ('Tennis Court 1', 'Tennis Court 2');

@@ -1,0 +1,7 @@
+select t.length as month, (case when t.length=1 or t.length=3 or t.length=5 
+						   or t.length=7 or t.length=8 or t.length=10 or t.length=12 
+						   then '31 days'
+						   when t.length=4 or t.length=6 or t.length=9 or t.length=11
+						   then '30 days' else '29 days' end)
+from (select generate_series(1,12) as length) as t
+order by month;

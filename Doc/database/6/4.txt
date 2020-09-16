@@ -1,0 +1,4 @@
+select memid, telephone
+from members
+where telephone like '(%'
+order by memid, telephone;

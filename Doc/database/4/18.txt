@@ -1,0 +1,6 @@
+select m.firstname, m.surname, round(sum(b.slots)*0.5, -1) as hours, 
+								rank() over(order by round(sum(b.slots)*0.5, -1) desc) as rank
+from members m, bookings b, facilities f
+where m.memid = b.memid and b.facid = f.facid
+group by m.memid
+order by hours desc, surname, firstname;

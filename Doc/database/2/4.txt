@@ -1,0 +1,4 @@
+select a.firstname as memfname, a.surname as memsname, 
+		b.firstname as recfname, b.surname as recsname
+from members a left join members b on a.recommendedby=b.memid 
+order by a.surname, a.firstname;

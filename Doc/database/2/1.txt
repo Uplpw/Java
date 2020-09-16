@@ -1,0 +1,3 @@
+select starttime
+from members, bookings
+where members.firstname='David' and members.surname='Farrell' and members.memid=bookings.memid;

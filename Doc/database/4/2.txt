@@ -1,0 +1,2 @@
+select count(guestcost) from facilities
+where guestcost >= 10;

@@ -1,0 +1,21 @@
+select t.member, t.recommender, t.firstname, t.surname 
+from ((with recursive r as (
+        select memid, firstname, surname, recommendedby from members where memid = 12
+        union  all
+        select members.memid, members.firstname, members.surname, members.recommendedby
+  		from members, r 
+  		where members.memid = r.recommendedby 
+     )
+select 12 as member, memid as recommender,firstname, surname 
+from r where memid <> 12 order by memid desc)
+union 
+(with recursive r as (
+        select memid, firstname, surname, recommendedby from members where memid = 22
+        union  all
+        select members.memid, members.firstname, members.surname, members.recommendedby
+  		from members, r 
+  		where members.memid = r.recommendedby 
+     )
+select 22 as member, memid as recommender,firstname, surname 
+from r where memid <> 22 order by memid desc)) as t
+order by member, recommender desc;

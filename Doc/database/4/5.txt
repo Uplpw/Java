@@ -1,0 +1,5 @@
+select f.facid, sum(b.slots) as slot
+from facilities f, bookings b
+where f.facid = b.facid and b.starttime between '2012-09-01 00:00:00' and '2012-10-01 00:00:00'
+group by f.facid
+order by slot asc;

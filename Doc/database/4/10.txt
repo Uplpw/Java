@@ -1,0 +1,8 @@
+select f.name as name, sum(case when b.memid=0 then guestcost*b.slots 
+                                else membercost*b.slots end) as revenue
+from facilities f, bookings b
+where f.facid = b.facid 
+group by f.name
+having sum(case when b.memid=0 then guestcost*b.slots 
+                                else membercost*b.slots end) < 1000
+order by revenue ;

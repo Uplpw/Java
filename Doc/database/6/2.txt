@@ -1,0 +1,4 @@
+select facid, name, membercost, 
+	   guestcost, initialoutlay, monthlymaintenance
+from facilities
+where name like 'Tennis%';

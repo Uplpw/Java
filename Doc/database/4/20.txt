@@ -1,0 +1,13 @@
+select name, (case when revenue = '1' then 'high'
+			 	   when revenue = '2' then 'average'
+			 	   else 'low' end)
+from (select name, (case when rank <= 3 then '1'
+			 	   when rank>3 and rank <= 6 then '2'
+			 	   else '3' end) as revenue
+	  from (select f.name, rank() over(order by sum(case when b.memid=0 
+												 then f.guestcost*b.slots 
+										     else f.membercost*b.slots end) desc, f.name asc)
+      from facilities f, bookings b
+      where f.facid=b.facid
+      group by f.name) as cd
+      order by revenue, name) as ft;
